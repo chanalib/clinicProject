@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Clinic.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20241217220613_create_db")]
-    partial class create_db
+    [Migration("20250115220823_creatDb")]
+    partial class creatDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

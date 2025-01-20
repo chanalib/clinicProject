@@ -15,12 +15,7 @@ namespace Clinic.Service
         {
             _doctorRepository = doctorRepository;
         }
-        //public List<Doctor> getAll()
-        //{
-        //    return _doctorRepository.getList();
-        //}
-
-        IEnumerable<Doctor> IDoctorService.getAll()
+        public List<Doctor> getAll()
         {
             return _doctorRepository.getList();
         }
@@ -28,6 +23,5 @@ namespace Clinic.Service
 
     public interface IDoctorService
     {
-        IEnumerable<Doctor> getAll();
     }
 }

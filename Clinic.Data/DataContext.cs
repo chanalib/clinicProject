@@ -1,5 +1,4 @@
 ﻿using Clinic.Core.Models;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Clinic.Data
 {
-    public class DataContext : DbContext
+    public class DataContext
     {
-        public DbSet<Doctor> Doctors { get; set; }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=my_db;Trusted_Connection=True;MultipleActiveResultSets=true");
+        public List<Doctor> Doctors { get; set; }
+        public DataContext() 
+        { 
+            Doctors = new List<Doctor>();
+            Doctors.Add(new Doctor { Id=1,Name="aviv",Email="a@gmail.com",Password="1"});
         }
-
     }
 }

@@ -14,7 +14,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<DoctorService>(); 
 builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
-builder.Services.AddDbContext<DataContext>();
+builder.Services.AddSingleton<DataContext>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
