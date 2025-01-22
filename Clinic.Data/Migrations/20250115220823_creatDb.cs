@@ -5,7 +5,7 @@
 namespace Clinic.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class create_db : Migration
+    public partial class creatDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

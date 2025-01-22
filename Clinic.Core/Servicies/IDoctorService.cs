@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Clinic.Core.Repositories
+namespace Clinic.Core.Servicies
 {
-    public interface IDoctorRepository
+    public interface IDoctorService
     {
-        List<Doctor> GetAll();
+        List<Doctor> GetList();
 
         Doctor? GetById(int id);
 
@@ -20,3 +20,4 @@ namespace Clinic.Core.Repositories
         void Delete(int id);
     }
 }
+ 

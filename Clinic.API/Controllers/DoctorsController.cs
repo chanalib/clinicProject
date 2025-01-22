@@ -1,6 +1,7 @@
-﻿using Clinic.Core.Models;
-using Clinic.Service;
+﻿using Clinic.Core.Servicies;
+using Clinic.Core.Models;
 using Microsoft.AspNetCore.Mvc;
+using Clinic.Service;
 
 namespace Clinic.API.Controllers
 {
@@ -15,34 +16,49 @@ namespace Clinic.API.Controllers
         }
         // GET: api/<DoctorsController>
         [HttpGet]
-        public IEnumerable<Doctor> Get()
+        public ActionResult Get()
         {
-           return _doctorService.getAll(); 
+            var doctors = _doctorService.GetList();
+            return Ok(doctors);
         }
 
         // GET api/<DoctorsController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public ActionResult Get(int id)
         {
-            return "value";
+            var doctor = _doctorService.GetById(id);
+            return Ok(doctor);
         }
 
         // POST api/<DoctorsController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult Post([FromBody] Doctor doctor)
         {
+            var newDoctor = _doctorService.Add(doctor);
+            return Ok(newDoctor);
+
         }
 
         // PUT api/<DoctorsController>/5
+        // PUT api/<DoctorsController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public ActionResult Put(int id, [FromBody] Doctor doctor)
         {
+            if (_doctorService.GetById(id) == null)
+            {
+                return NotFound(); // מחזיר 404 אם הרופא לא נמצא
+            }
+            var updatedDoctor = _doctorService.Update(doctor);
+            return Ok(updatedDoctor);
         }
+
 
         // DELETE api/<DoctorsController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public ActionResult Delete(int id)
         {
+            _doctorService.Delete(id);
+            return Ok();
         }
     }
 }

@@ -1,4 +1,5 @@
 using Clinic.Core.Repositories;
+using Clinic.Core.Servicies;
 using Clinic.Data;
 using Clinic.Data.Repositories;
 using Clinic.Service;
@@ -12,8 +13,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<DoctorService>(); 
+builder.Services.AddScoped<IDoctorService, DoctorService>();
 builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
+
 builder.Services.AddDbContext<DataContext>();
 var app = builder.Build();
 
