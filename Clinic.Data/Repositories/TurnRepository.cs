@@ -1,6 +1,5 @@
 ﻿using Clinic.Core.Models;
 using Clinic.Core.Repositories;
-using Itinero.Algorithms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,14 +11,14 @@ namespace Clinic.Data.Repositories
     public class TurnRepository : Repository<Turn>, ITurnRepository
     {
         private readonly DataContext _context;
-        public TurnRepository(DataContext context)
+        public TurnRepository(DataContext context) : base(context)
         {
             _context = context;
         }
 
-        public List<Turn> GetAll()
+        public List<Turn> GetList()
         {
-            return _context.Turns;
+            return _context.Turns.ToList();
         }
 
         public Turn? GetById(int id)
@@ -42,7 +41,6 @@ namespace Clinic.Data.Repositories
             existingTurn.dateTime = p.dateTime;
             existingTurn.doctor = p.doctor;
             existingTurn.patient = p.patient;
-            existingTurn.Age = p.Age;
 
             return existingTurn;
         }
@@ -52,7 +50,7 @@ namespace Clinic.Data.Repositories
             var existingTurn = GetById(id);
             if (existingTurn is not null)
             {
-                _context.Patients.Remove(existingTurn);
+                _context.Turns.Remove(existingTurn);
             }
         }
 

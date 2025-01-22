@@ -1,6 +1,7 @@
 ﻿using Clinic.Core.Models;
 using Clinic.Core.Repositories;
 using Clinic.Core.Servicies;
+using Clinic.Data.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,32 +12,37 @@ namespace Clinic.Service
 {
     public class DoctorService: IDoctorService
     {
-        private readonly IDoctorRepository _doctorRepository;
-        public DoctorService(IDoctorRepository doctorRepository)
+        private readonly IRepositoryManager _doctorRepository;
+        public DoctorService(IRepositoryManager doctorRepository)
         {
             _doctorRepository = doctorRepository;
         }
-        public List<Doctor> GetList()
+        public IEnumerable<Doctor> GetList()
         {
-            return _doctorRepository.GetAll();
+            return _doctorRepository.doctors.GetList();
         }
 
-        public Doctor? GetById(int id)
+        public Doctor GetById(int id)
         {
-            return _doctorRepository.GetById(id);
+            return _doctorRepository.doctors.GetById(id);
         }
         public Doctor Add(Doctor user)
         {
-            return _doctorRepository.Add(user);
+            return _doctorRepository.doctors.Add(user);
+            _doctorRepository.Save();
         }
         public Doctor Update(Doctor doctor)
         {
-            return _doctorRepository.Update(doctor);
+            return _doctorRepository.doctors.Update(doctor);
+            _doctorRepository.Save();
+
         }
 
         public void Delete(int id)
         {
-            _doctorRepository.Delete(id);
+            _doctorRepository.doctors.Delete(id);
+            _doctorRepository.Save();
+
         }
     }
 

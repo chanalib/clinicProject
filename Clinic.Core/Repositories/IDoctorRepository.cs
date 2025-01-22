@@ -9,7 +9,7 @@ namespace Clinic.Core.Repositories
 {
     public interface IDoctorRepository
     {
-        List<Doctor> GetAll();
+        List<Doctor> GetList();
 
         Doctor? GetById(int id);
 

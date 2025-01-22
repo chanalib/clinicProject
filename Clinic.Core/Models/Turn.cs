@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Clinic.Core.Models
 {
-    internal class Turn
+    public class Turn
     {
         public int Id { get; set; }
         public DateTime dateTime { get; set; }

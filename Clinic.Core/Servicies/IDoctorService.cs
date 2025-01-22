@@ -9,7 +9,7 @@ namespace Clinic.Core.Servicies
 {
     public interface IDoctorService
     {
-        List<Doctor> GetList();
+        IEnumerable<Doctor> GetList();
 
         Doctor? GetById(int id);
 

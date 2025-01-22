@@ -10,7 +10,7 @@ namespace Clinic.API.Controllers
     public class DoctorsController : ControllerBase
     {
         private readonly IDoctorService _doctorService;
-        public DoctorsController(IDoctorService doctorService)
+        public DoctorsController(DoctorService doctorService)
         {
             _doctorService = doctorService;
         }

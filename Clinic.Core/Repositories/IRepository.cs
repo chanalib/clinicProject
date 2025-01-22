@@ -8,7 +8,7 @@ namespace Clinic.Data.Repositories
 {
     public interface IRepository<T> where T : class
     {
-        IEnumerable<T> GetAll();
+        IEnumerable<T> GetList();
 
         T? GetById(int id);
 
@@ -16,6 +16,6 @@ namespace Clinic.Data.Repositories
 
         T Update(T entity);
 
-        void Delete(T entity);
+        void Delete(int id);
     }
 }

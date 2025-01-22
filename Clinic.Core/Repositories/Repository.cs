@@ -26,7 +26,7 @@ namespace Clinic.Data.Repositories
             _dbSet.Remove(entity);
         }
 
-        public IEnumerable<T> GetList()
+        public IEnumerable<T> GetAll()
         {
             return _dbSet.ToList();
         }

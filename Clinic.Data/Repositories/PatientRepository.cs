@@ -8,50 +8,51 @@ using System.Threading.Tasks;
 
 namespace Clinic.Data.Repositories
 {
-    public class DoctorRepository : IDoctorRepository
+    public class PatientRepository : Repository<Patient>, IPatientRepository
     {
         private readonly DataContext _context;
-        public DoctorRepository(DataContext context)
+        public PatientRepository(DataContext context) : base(context)
         {
             _context = context;
         }
 
-        public List<Doctor> GetAll()
+        public List<Patient> GetList()
         {
-            return _context.Doctors.ToList();
+            return _context.Patients.ToList();
         }
 
-        public Doctor? GetById(int id)
+        public Patient? GetById(int id)
         {
-            return _context.Doctors.FirstOrDefault(x => x.Id == id);
+            return _context.Patients.FirstOrDefault(x => x.Id == id);
         }
 
-        public Doctor Add(Doctor user)
+        public Patient Add(Patient user)
         {
-            _context.Doctors.Add(user);
+            _context.Patients.Add(user);
             return user;
         }
 
-        public Doctor Update(Doctor doctor)
+        public Patient Update(Patient patient)
         {
-            var existingDoctor = GetById(doctor.Id);
-            if (existingDoctor is null)
+            var existingPatient = GetById(patient.Id);
+            if (existingPatient is null)
             {
-                throw new Exception("Doctor not found");
+                throw new Exception("Patient not found");
             }
-            existingDoctor.Name = doctor.Name;
-            existingDoctor.Email = doctor.Email;
-            existingDoctor.Password = doctor.Password;
+            existingPatient.Name = patient.Name;
+            existingPatient.Email = patient.Email;
+            existingPatient.Adress = patient.Adress;
+            existingPatient.Age = patient.Age;
 
-            return existingDoctor;
+            return existingPatient;
         }
 
         public void Delete(int id)
         {
-            var existingDoctor = GetById(id);
-            if (existingDoctor is not null)
+            var existingPatient = GetById(id);
+            if (existingPatient is not null)
             {
-                _context.Doctors.Remove(existingDoctor);
+                _context.Patients.Remove(existingPatient);
             }
         }
     }

@@ -18,7 +18,7 @@ namespace Clinic.Data.Repositories
 
         public List<Doctor> GetAll()
         {
-            return _context.Doctors.ToList();
+            return _context.Doctors;
         }
 
         public Doctor? GetById(int id)
