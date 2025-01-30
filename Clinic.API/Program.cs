@@ -1,7 +1,10 @@
 using Clinic.Core.Repositories;
+using Clinic.Core.Servicies;
+using Clinic.Core;
 using Clinic.Data;
 using Clinic.Data.Repositories;
 using Clinic.Service;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,12 +15,29 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<DoctorService>(); 
-builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
-builder.Services.AddSingleton<DataContext>();
-var app = builder.Build();
+builder.Services.AddCors(opt => opt.AddPolicy("MyPolicy", policy =>
+{
+    policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+}));
 
-// Configure the HTTP request pipeline.
+builder.Services.AddScoped<IDoctorService, DoctorService>();
+builder.Services.AddScoped<IPatientService, PatientService>();
+builder.Services.AddScoped<ITurnService, TurnService>();
+builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
+builder.Services.AddScoped<IPatientRepository, PatientRepository>();
+builder.Services.AddScoped<ITurnRepository, TurnRepository>();
+builder.Services.AddScoped<IRepositoryManager, RepositoryManager>();
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+//builder.Services.AddSingleton<DataContext>();
+//builder.Services.AddAutoMapper(typeof(MappingProfile));
+builder.Services.AddDbContext<DataContext>();
+builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    options.JsonSerializerOptions.WriteIndented = true;
+});
+var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -25,9 +45,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors("MyPolicy");
 app.UseAuthorization();
 
 app.MapControllers();
 
 app.Run();
+

@@ -9,6 +9,6 @@ namespace Clinic.Core.Repositories
 {
     public interface IDoctorRepository
     {
-        List<Doctor> getList();
+      // List<Doctor> getList();
     }
 }

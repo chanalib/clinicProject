@@ -9,15 +9,15 @@ namespace Clinic.Core.Servicies
 {
     public interface IDoctorService
     {
-        List<Doctor> GetList();
+        IEnumerable<Doctor> GetList();
 
-        Doctor? GetById(int id);
+        Doctor GetById(int id);
 
-        Doctor Add(Doctor user);
+        void Add(Doctor user);
 
-        Doctor Update(Doctor user);
+        void Update(Doctor user);
 
-        void Delete(int id);
+        void Delete(Doctor user);
     }
 }
  

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Clinic.Core.Repositories
 {
-    internal interface IPatientRepository
+    public interface IPatientRepository
     {
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Clinic.Core.Models;
+using Clinic.Core.Servicies;
 using Clinic.Service;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,40 +10,45 @@ namespace Clinic.API.Controllers
     public class DoctorsController : ControllerBase
     {
         private readonly IDoctorService _doctorService;
-        public DoctorsController(DoctorService doctorService)
+        public DoctorsController(IDoctorService contex)
         {
-            _doctorService = doctorService;
+            _doctorService = contex;
         }
         // GET: api/<DoctorsController>
         [HttpGet]
-        public IEnumerable<Doctor> Get()
+        public ActionResult Get()
         {
-           return _doctorService.getAll(); 
+            var list =_doctorService.GetList();
+           return Ok(list); 
         }
 
         // GET api/<DoctorsController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public ActionResult Get(int id)
         {
-            return "value";
+            var doctor = _doctorService.GetById(id);
+            return Ok(doctor);
         }
 
         // POST api/<DoctorsController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Doctor value)
         {
+            _doctorService.Update(value);
         }
 
         // PUT api/<DoctorsController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put( [FromBody] Doctor value)
         {
+            _doctorService.Add( value);
         }
 
         // DELETE api/<DoctorsController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(Doctor doctor)
         {
+            _doctorService.Delete(doctor);
         }
     }
 }

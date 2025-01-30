@@ -1,4 +1,5 @@
 ﻿using Clinic.Core.Models;
+using Clinic.Core.Servicies;
 using Clinic.Service;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,48 +9,46 @@ namespace Clinic.API.Controllers
     [ApiController]
     public class PatientController : ControllerBase
     {
-        private static List<Patient> patients = new List<Patient> { new Patient { Id = 1, Name = "User Name", Email = "hi@email.com" ,Adress="bney brak", Age=25} };
-      //  private readonly IDoctorService _patientService;
-        //public PatientController(IDoctorService doctorService)
-        //{
-        //    _patientService = doctorService;
-        //}
+        private readonly IPatientService _patientService;
+        public PatientController(IPatientService contex)
+        {
+            _patientService = contex;
+        }
         // GET: api/<DoctorsController>
         [HttpGet]
-        public IEnumerable<Patient> Get()
+        public ActionResult Get()
         {
-            return patients;
+            var list = _patientService.GetList();
+            return Ok(list);
         }
 
         // GET api/<DoctorsController>/5
         [HttpGet("{id}")]
-        public ActionResult  Get(int id)
+        public ActionResult Get(int id)
         {
-            var patient = patients.Find(u => u.Id == id);
-            if (patient is null)
-
-                return NotFound();
-
+            var patient = _patientService.GetById(id);
             return Ok(patient);
         }
 
         // POST api/<DoctorsController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Patient value)
         {
+            _patientService.AddValue(value);
         }
 
         // PUT api/<DoctorsController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put([FromBody] Patient value)
         {
+            _patientService.Update(value);
         }
 
         // DELETE api/<DoctorsController>/5
-        [HttpGet("{id}/DateTime")]
-        public void getTurnToday(int id)//פונקציה שמחזירה אם יש למטופל זה תור היום
+        [HttpDelete("{id}")]
+        public void Delete(Patient patient)
         {
-
+            _patientService.Delete(patient);
         }
     }
 }
