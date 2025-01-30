@@ -1,6 +1,9 @@
 using Clinic.Core.Repositories;
 using Clinic.Core.Servicies;
+<<<<<<< HEAD
 using Clinic.Core;
+=======
+>>>>>>> 0fcec3393a653e385684a4c100f716a684bebdb5
 using Clinic.Data;
 using Clinic.Data.Repositories;
 using Clinic.Service;
@@ -15,10 +18,22 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+<<<<<<< HEAD
 builder.Services.AddCors(opt => opt.AddPolicy("MyPolicy", policy =>
 {
     policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
 }));
+=======
+builder.Services.AddScoped<IDoctorService, DoctorService>();
+builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
+<<<<<<< HEAD
+
+builder.Services.AddDbContext<DataContext>();
+=======
+builder.Services.AddSingleton<DataContext>();
+>>>>>>> 6a29c17589fe23619cd948fe2e256f1b864d1a7f
+var app = builder.Build();
+>>>>>>> 0fcec3393a653e385684a4c100f716a684bebdb5
 
 builder.Services.AddScoped<IDoctorService, DoctorService>();
 builder.Services.AddScoped<IPatientService, PatientService>();

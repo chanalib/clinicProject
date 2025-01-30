@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34902.65
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clinic.API", "Clinic.API\Clinic.API.csproj", "{B1358C7A-4280-4804-91CC-FB97A2FC9C8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clinic.API", "Clinic.API\Clinic.API.csproj", "{B1358C7A-4280-4804-91CC-FB97A2FC9C8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clinic.Data", "Clinic.Data\Clinic.Data.csproj", "{52871728-BCCF-4299-8AF2-1314DC44E466}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clinic.Data", "Clinic.Data\Clinic.Data.csproj", "{52871728-BCCF-4299-8AF2-1314DC44E466}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clinic.Core", "Clinic.Core\Clinic.Core.csproj", "{B0E6970D-6C01-46E1-8A62-93C704F83B80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clinic.Core", "Clinic.Core\Clinic.Core.csproj", "{B0E6970D-6C01-46E1-8A62-93C704F83B80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clinic.Service", "Clinic.Service\Clinic.Service.csproj", "{F8675ECC-69A4-4F69-B360-BA46DEB8C36E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clinic.Service", "Clinic.Service\Clinic.Service.csproj", "{F8675ECC-69A4-4F69-B360-BA46DEB8C36E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "unitTest", "unitTest\unitTest.csproj", "{32B0FCC2-830A-460C-AD01-08ACCD95318A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{F8675ECC-69A4-4F69-B360-BA46DEB8C36E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8675ECC-69A4-4F69-B360-BA46DEB8C36E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8675ECC-69A4-4F69-B360-BA46DEB8C36E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32B0FCC2-830A-460C-AD01-08ACCD95318A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32B0FCC2-830A-460C-AD01-08ACCD95318A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32B0FCC2-830A-460C-AD01-08ACCD95318A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32B0FCC2-830A-460C-AD01-08ACCD95318A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

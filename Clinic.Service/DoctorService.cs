@@ -19,6 +19,7 @@ namespace Clinic.Service
         }
         public IEnumerable<Doctor> GetList()
         {
+<<<<<<< HEAD
             return _doctorRepository.doctors.GetAll();
         }
         public Doctor GetById(int id)
@@ -42,6 +43,35 @@ namespace Clinic.Service
         }
         
     }
+=======
+            return _doctorRepository.doctors.GetList();
+        }
+
+        public Doctor GetById(int id)
+        {
+            return _doctorRepository.doctors.GetById(id);
+        }
+        public Doctor Add(Doctor user)
+        {
+            return _doctorRepository.doctors.Add(user);
+            _doctorRepository.Save();
+        }
+        public Doctor Update(Doctor doctor)
+        {
+            return _doctorRepository.doctors.Update(doctor);
+            _doctorRepository.Save();
+
+        }
+
+        public void Delete(int id)
+        {
+            _doctorRepository.doctors.Delete(id);
+            _doctorRepository.Save();
+
+        }
+    }
+
+>>>>>>> 0fcec3393a653e385684a4c100f716a684bebdb5
 }
 
  

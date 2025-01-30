@@ -11,6 +11,7 @@ namespace Clinic.Service
 {
     public class TurnService : ITurnService
     {
+<<<<<<< HEAD
         private readonly IRepositoryManager _turnRepository;
         public TurnService(IRepositoryManager turnRepository)
         {
@@ -40,5 +41,11 @@ namespace Clinic.Service
             _turnRepository.Save();
         }
 
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> 6a29c17589fe23619cd948fe2e256f1b864d1a7f
+>>>>>>> 0fcec3393a653e385684a4c100f716a684bebdb5
     }
 }
